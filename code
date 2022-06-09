@@ -1,0 +1,24 @@
+        let _this = this;
+				let options = {};
+				//#ifdef APP-PLUS || APP-PLUS-NVUE
+				options.engine = 'iFly';
+				options.punctuation = false; // 是否需要标点符号 
+				options.timeout = 10 * 1000; //语音录入持续时长
+				plus.speech.startRecognize(options, function(s) {
+					_this.searchText = _this.searchText + s;
+					console.log(_this.searchText) //拿到语音识别的结果
+					//下面是逻辑  
+					_this.searchValue = s;
+					_this.searchText = ""
+					
+					// 打印输出结果
+					 _this.words1 = _this.searchValue
+					 _this.words2 = _this.searchText
+					 
+					// 关闭语音
+					plus.speech.stopRecognize();
+				});
+				//#endif
+				// #ifdef H5
+				alert("只有h5平台才有alert方法")
+				// #endif
